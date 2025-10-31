@@ -1,0 +1,61 @@
+PROJECT OUTLINE: DYNAMICAL PROCESSES IN THE RAMAYANA NETWORK
+
+COURSE: Dynamical Processes in Complex Networks
+TOPIC: Network Analysis and Dynamics of the Ramayana Epic
+
+=======================================================
+PHASE 1: DATA MODELING AND STATIC ANALYSIS (OBJECTIVES 1 & 2)
+=======================================================
+
+1. DATASET CREATION: MULTI-LAYERED NETWORK (Reference Dataset)
+<h2>Objective: Model the narrative as a network of interconnected entities.</h2>
+- NODES: Characters, Events/Topics, Locations, Kandas.
+- EDGE TYPES (Relationships):
+    - Co-Occurrence: Character A and Character B are present in the same Event. (Primary layer for social analysis).
+    - Affiliation: Character to Faction (e.g., Vanara Sena, Rakshasa).
+    - Spatial: Event occurs at Location.
+- EDGE WEIGHTS:
+    - Co-Occurrence: Frequency (number of times characters appear together).
+    - Sentiment (Optional but highly recommended): Positive (Ally), Negative (Enemy), Neutral.
+
+2. STATIC TOPOLOGICAL ANALYSIS (Network Metrics)
+<h2>Objective: Identify structural properties and influential figures in the overall network.</h2>
+- NETWORK: Use the Character Co-Occurrence Network (weighted by frequency).
+- METRICS TO CALCULATE:
+    - Centrality Measures:
+        - Betweenness Centrality: Identify crucial **brokers** (e.g., **Hanuman**, Vibhishana) who connect otherwise disconnected groups.
+        - Eigenvector Centrality: Identify the most **influential** characters (e.g., Rama, Ravana) connected to other powerful/well-connected nodes.
+    - Community Detection: Use algorithms (e.g., Louvain) to find **natural groupings/alliances** within the epic (e.g., Ayodhya, Kishkindha, Lanka).
+    - Clustering Coefficient: Analyze the local cohesion/tightness of these groups.
+
+=======================================================
+PHASE 2: DYNAMIC PROCESSES AND MODELING (OBJECTIVE 3)
+=======================================================
+
+3. DYNAMIC NETWORK EVOLUTION ACROSS KANDAS (Time Series Analysis)
+<h2>Objective: Track how the network structure changes over the 'time steps' (Kandas).</h2>
+- TIME STEPS: Kanda 1 (Bala) -> Kanda 2 (Ayodhya) -> ... -> Kanda 6 (Yuddha).
+- DYNAMIC METRICS TO TRACK (Time Series Plot):
+    - Network Size/Density: Total number of nodes (active characters) and edges over time. (Expected peak in Yuddha Kanda).
+    - Dynamic Centrality: Plot the Betweenness/Eigenvector centrality of key characters (Rama, Ravana, Vibhishana) over the 6 Kandas.
+    - Modularity ($Q$): Track how clearly defined the communities (alliances) are at each Kanda. (Hypothesis: Modularity should solidify during the build-up to the war).
+
+4. MODELING DYNAMICAL PROCESSES
+<h2>Objective: Apply classic dynamical models to simulate processes on the network structure.</h2>
+
+A. INFORMATION/RUMOR SPREADING (Epidemic Models - SIR/SIS)
+- SCENARIO: The spread of critical intelligence (e.g., Sita's location, a powerful weapon's secret, Ravana's weakness).
+- MODEL: SIR (Susceptible, Infected, Recovered/Removed).
+- INSIGHT: Test the **efficiency of the network** for fast information dissemination. Use the spread rate ($\beta$) and recovery rate ($\gamma$) to analyze the speed and reach of information within the alliance networks.
+
+B. OPINION DYNAMICS (Voter Model / DeGroot Model)
+- SCENARIO: The shifting allegiance or polarization of characters (e.g., Vibhishana's defection, neutral parties choosing a side).
+- MODEL: Assign an "Opinion" ($\mathbf{O}_i$) to each character (e.g., $\mathbf{O}_i \in [-1, +1]$ for Pro-Ravana to Pro-Rama).
+- PROCESS: Simulate interaction rules where neighbors influence an agent's opinion, driving the system toward **consensus (+1 or -1) or polarization**.
+- INSIGHT: Identify the **tipping point** in the narrative where a key interaction causes a critical alignment shift.
+
+C. NETWORK ROBUSTNESS (Percolation/Targeted Attacks)
+- SCENARIO: The effect of the death/removal of a high-status character.
+- PROCESS: Sequentially remove key characters (e.g., Ravana, Kumbhakarna, Indrajit, Lakshmana) from their respective alliance networks (nodes removal).
+- METRIC: Measure the drop in the **Largest Connected Component (LCC)** size after each removal.
+- INSIGHT: Quantify the **fragility or redundancy** of the two main war-time alliances. (e.g., Which alliance is structurally more dependent on its leader?).
